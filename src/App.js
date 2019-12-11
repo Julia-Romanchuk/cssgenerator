@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom';
+import './style.sass' ;
+import './index.css';
+import Background from './background';
+import Border from './border';
+import Flexbox from './flexbox';
+import Text from './text';
+import Font from './font';
+import Block from './block';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class StartButton extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      mainArr: ['background', 'border', 'font', 'text', 'flexbox', 'block'],
+    }
+  }
+  render(){
+    let componentArr = this.state.mainArr.map((elem) => <button>{elem}</button>)
+    return this.state.mainArr.map((elem) => <button>{elem}</button>);
+  }
+  }
+
+
+class App extends Component {
+  render() {
+    return (
+      <div className='root'>
+      <StartButton />
+
+      <Router>
+          <Route exact path='/background' component = {Background}/>
+          <Route exact path='/border' component = {Border}/>
+          <Route exact path='/flexbox' component = {Flexbox}/>
+          <Route exact path='/font' component = {Font}/>
+          <Route exact path='/text' component = {Text}/>
+          <Route exact path='/block' component = {Block}/>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
