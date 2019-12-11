@@ -1,50 +1,41 @@
-import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom';
-import './style.sass' ;
-import './index.css';
-import Background from './background';
-import Border from './border';
-import Flexbox from './flexbox';
-import Text from './text';
-import Font from './font';
-import Block from './block';
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Layout from './components/Layout'
+import FlexBox from './pages/FlexBox'
+import Home from './pages/Home'
 
-class StartButton extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      mainArr: ['background', 'border', 'font', 'text', 'flexbox', 'block'],
-    }
-  }
-  render(){
-    let componentArr = this.state.mainArr.map((elem) => <button>{elem}</button>)
-    return this.state.mainArr.map((elem) => <button>{elem}</button>);
-  }
-  }
+import './index.scss'
+import './index.css'
 
+// class StartButton extends Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {
+//       mainArr: ['background', 'border', 'font', 'text', 'flexbox', 'block'],
+//     }
+//   }
+//   render(){
+//     let componentArr = this.state.mainArr.map((elem) => <button>{elem}</button>)
+//     return this.state.mainArr.map((elem) => <button>{elem}</button>);
+//   }
+//   }
 
-class App extends Component {
-  render() {
-    return (
-      <div className='root'>
-      <StartButton />
+const App = () => (
+  <>
+    <BrowserRouter>
+      <Layout>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route exact path='/flex-box' component={FlexBox}/>
+          {/*<Route exact path='/border' component={Border}/>*/}
+          {/*<Route exact path='/flexbox' component={Flexbox}/>*/}
+          {/*<Route exact path='/font' component={Font}/>*/}
+          {/*<Route exact path='/text' component={Text}/>*/}
+          {/*<Route exact path='/block' component={Block}/>*/}
+        </Switch>
+      </Layout>
+    </BrowserRouter>
+  </>
+)
 
-      <Router>
-          <Route exact path='/background' component = {Background}/>
-          <Route exact path='/border' component = {Border}/>
-          <Route exact path='/flexbox' component = {Flexbox}/>
-          <Route exact path='/font' component = {Font}/>
-          <Route exact path='/text' component = {Text}/>
-          <Route exact path='/block' component = {Block}/>
-        </Router>
-      </div>
-    );
-  }
-}
-
-export default App;
+export default App
