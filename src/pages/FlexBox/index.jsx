@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 class FlexBox extends Component {
   constructor(props) {
     super(props)
+    
     this.state = {
       alignItems: '',
       // move to default
@@ -12,6 +13,12 @@ class FlexBox extends Component {
       height: 500,
       display: 'flex'
     }
+  }
+
+  renderItemButtons(){
+  const buttonArr = this.state.items.map((item) => <button className = "itemButton">item</button>)
+    return <div>{buttonArr}</div>
+  
   }
 
   handleClick = event => {
@@ -25,8 +32,9 @@ class FlexBox extends Component {
     console.log(this.state)
     return (
       <div>
+        {this.renderItemButtons()}
         <input onChange={this.handleClick}/>
-        <div style={this.state}>
+        <div >
           FlexBox
         </div>
       </div>

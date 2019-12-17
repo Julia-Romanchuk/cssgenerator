@@ -3,17 +3,15 @@ import { withRouter } from 'react-router-dom'
 
 class Layout extends Component{
   handleHistoryPush = (to) => () => {
-    const { history } = this.props
-
+    const { history } = this.props;
     history.push(to)
   }
   
   render() {
-    const { children } = this.props
+    const  {children}  = this.props;
 
     return (
       <div>
-        <button onClick={this.handleHistoryPush('/')}>Home</button>
         <button onClick={this.handleHistoryPush('/flex-box')}>Flexbox</button>
         <button onClick={this.handleHistoryPush('/border')}>border</button>
         <button onClick={this.handleHistoryPush('/flexbox')}>flexbox</button>
