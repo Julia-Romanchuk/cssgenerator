@@ -16,8 +16,8 @@ const App = () => (
     <div className = 'title'><p>Welcome to CSS Generator</p></div>
       <Layout>
         <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route exact path='/flex-box' component={FlexBox}/>
+          {/*<Route exact path='/' component={Home}/>*/}
+          {/*<Route exact path='/flex-box' component={FlexBox}/>*/}
           <Route exact path='/border' component={Border}/>
           {/*<Route exact path='/flexbox' component={Flexbox}/>*/}
           {/*<Route exact path='/font' component={Font}/>*/}
