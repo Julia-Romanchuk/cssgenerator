@@ -14,7 +14,7 @@ class Layout extends Component{
       <div>
         <button onClick={this.handleHistoryPush('/flex-box')}>Flexbox</button>
         <button onClick={this.handleHistoryPush('/border')}>border</button>
-        <button onClick={this.handleHistoryPush('/flexbox')}>flexbox</button>
+        <button onClick={this.handleHistoryPush('/outline')}>outline</button>
         <button onClick={this.handleHistoryPush('/font')}>font</button>
         <button onClick={this.handleHistoryPush('/text')}>text</button>
         <button onClick={this.handleHistoryPush('/block')}>block</button>

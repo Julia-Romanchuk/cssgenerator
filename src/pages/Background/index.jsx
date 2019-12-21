@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import './styles.css'
 
 // default
 
-class FlexBox extends Component {
+class Border extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -24,27 +25,9 @@ class FlexBox extends Component {
     return Object.keys(this.state).map((item) => (
       <div>
         <div className='item'>{item}</div>
-        <input id={item} value={this.state[item]} onChange={this.handleChange(item)}/>
+        <input value={this.state[item]} onChange={this.handleChange(item)}/>
       </div>
     ))
-  }
-
-  makeCorrectValue = () => {
-    let truePropArr = [];
-    Object.keys(this.state).forEach((item) => {
-      let arr = item.split('');
-      arr[6] = '-' + arr[6].toLowerCase();
-      item = arr.join('');
-      truePropArr.push(item);}
-    )
-    return truePropArr;}
-
-
-  drawCode = () => {
-    return<div>
-      border-radius: {this.state.borderRadius};
-
-    </div>
   }
 
   render() {
@@ -55,10 +38,9 @@ class FlexBox extends Component {
         <div style={this.state}>
           This block will change when you input something
         </div>
-        <div>{this.drawCode()}</div>
       </>
     )
   }
 }
 
-export default FlexBox
+export default Border
