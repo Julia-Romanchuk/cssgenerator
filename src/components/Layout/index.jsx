@@ -12,12 +12,12 @@ class Layout extends Component{
 
     return (
       <div>
-        <button onClick={this.handleHistoryPush('/flex-box')}>Flexbox</button>
-        <button onClick={this.handleHistoryPush('/border')}>border</button>
-        <button onClick={this.handleHistoryPush('/outline')}>outline</button>
-        <button onClick={this.handleHistoryPush('/font')}>font</button>
-        <button onClick={this.handleHistoryPush('/text')}>text</button>
-        <button onClick={this.handleHistoryPush('/block')}>block</button>
+        <button onClick={this.handleHistoryPush('/')}>HOME</button>
+        <button onClick={this.handleHistoryPush('/text')}>Text</button>
+        <button onClick={this.handleHistoryPush('/boxShadow')}>BoxShadow</button>
+        <button onClick={this.handleHistoryPush('/border')}>Border</button>
+        <button onClick={this.handleHistoryPush('/font')}>Font</button>
+        <button onClick={this.handleHistoryPush('/block')}>Block</button>
 
         <div>
           {children}
@@ -28,3 +28,6 @@ class Layout extends Component{
 }
 
 export default withRouter(Layout)
+
+
+

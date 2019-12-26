@@ -1,15 +1,40 @@
 import React, { Component } from 'react'
 
-// default
+const Item = (props) => {
+  return Object.keys(props.items).map((item) => (
+    <form>
+      <div>{item}</div>
+      <input value={props.items[item]} onChange={props.handleChange(item)} />
+    </form>))
+}
 
-class Block extends Component {
+class CodeArea extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  }
+
+  render() {
+    console.log(this.props.items)
+    let propArr = [];
+    for (let key in this.props.items) {
+      if (!(this.props.items[key] === '')) {
+        propArr.push(<p>{key}: {this.props.items[key]}</p>);
+      }
+    }
+    return (propArr)
+  }
+}
+
+class Border extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      margin: '',
       padding: '',
-      heigth: '',
-      weight: '',
+      margin: '',
+      height: '',
+      width: '',
     }
   }
 
@@ -20,26 +45,34 @@ class Block extends Component {
     })
   }
 
-  drawItems = () => {
-    return Object.keys(this.state).map((item) => (
-      <div>
-        <div className='item'>{item}</div>
-        <input value={this.state[item]} onChange={this.handleChange(item)}/>
-      </div>
-    ))
+  makeCorrectValue = () => {
+    let truePropArr = [];
+    Object.keys(this.state).forEach((item) => {
+      let arr = item.split('');
+      arr[6] = '-' + arr[6].toLowerCase();
+      item = arr.join('');
+      truePropArr.push(item);
+    }
+    )
+    return truePropArr;
   }
 
   render() {
     console.log(this.state)
     return (
-      <>
-        <div>{this.drawItems()}</div>
-        <div style={this.state}>
+      <div className='gb'>
+        <div className='items' >
+          <Item items={this.state} handleChange={this.handleChange} />
+        </div>
+        <div className='block'  style={this.state}>
           This block will change when you input something
         </div>
-      </>
+        <div className='code'>
+          <CodeArea items={this.state} />
+        </div>
+      </div>
     )
   }
 }
 
-export default Block
+export default Border

@@ -2,15 +2,47 @@ import React, { Component } from 'react'
 
 // default
 
+const Item = (props) => {
+  let number = 0;
+  return Object.keys(props.items).map((item) => (
+      <div>
+        <div>{props.correctNames[`${number++}`]}</div>
+        <input value={props.items[item]} onChange={props.handleChange(item)}/>
+      </div>))
+}
+
+class CodeArea extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+        }
+        }
+
+   
+
+    render () {
+      let number = 0;
+        console.log(this.props.items)
+        let propArr = [];
+        for (let key in this.props.items){
+            if (!(this.props.items[key] === '')){
+            propArr.push(<p>{this.props.correctNames[number]}: {this.props.items[key]}</p>);
+            } number++
+        }
+        return (propArr) }    
+
+}
+
+
+
 class Outline extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      //border: '1px solid black',
         outlineStyle: '',
         outlineColor: '',
-        outlineWidth: '',
-        outlineOffset: ''
+        ouilineWidth: '',
+        outlineOffset: '',
     }
   }
 
@@ -19,17 +51,9 @@ class Outline extends Component {
     this.setState({
       [style]: event.target.value,
     })
-
   }
 
-  drawItems = () => {
-    return Object.keys(this.state).map((item) => (
-      <div>
-        <div className='item'>{item}</div>
-        <input value={this.state[item]} onChange={this.handleChange(item)}/>
-      </div>
-    ))
-  }
+  
 
   makeCorrectValue = () => {
     let truePropArr = [];
@@ -39,21 +63,20 @@ class Outline extends Component {
       item = arr.join('');
       truePropArr.push(item);}
     )
-        return truePropArr;}
+  return truePropArr;
+ }
 
+      
   render() {
     console.log(this.state)
     return (
       <>
-        <div>{this.drawItems()}</div>
+      <Item items = {this.state} handleChange = {this.handleChange} correctNames={this.makeCorrectValue()}/>
         <div style={this.state}>
           This block will change when you input something
         </div>
-        <div className>
-            {this.state}
-        </div>
         <div>
-            {this.makeCorrectValue()}
+            <CodeArea items={this.state}  correctNames={this.makeCorrectValue()}/>
         </div>
       </>
     )
